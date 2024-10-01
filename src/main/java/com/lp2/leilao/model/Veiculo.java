@@ -1,9 +1,8 @@
 package com.lp2.leilao.model;
 
-import com.lp2.leilao.Patterns.Leilao;
-
 import lombok.Getter;
 import lombok.Setter;
+import com.lp2.leilao.patterns.Leilao;
 
 @Getter
 @Setter
