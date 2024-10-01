@@ -1,4 +1,4 @@
-package com.lp2.leilao.patterns;
+package com.lp2.leilao.model.patterns;
 
 public class EmAbertoState implements LeilaoState {
 

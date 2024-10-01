@@ -1,4 +1,4 @@
-package com.lp2.leilao.patterns;
+package com.lp2.leilao.model.patterns;
 
 public interface LeilaoState {
     void abrirLeilao(Leilao leilao);

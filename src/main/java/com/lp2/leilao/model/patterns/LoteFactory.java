@@ -1,4 +1,4 @@
-package com.lp2.leilao.patterns;
+package com.lp2.leilao.model.patterns;
 
 import com.lp2.leilao.model.Dispositivo;
 import com.lp2.leilao.model.Veiculo;

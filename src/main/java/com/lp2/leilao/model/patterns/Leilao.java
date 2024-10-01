@@ -1,18 +1,26 @@
-package com.lp2.leilao.patterns;
+package com.lp2.leilao.model.patterns;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
 @Setter
+@Entity
 public class Leilao {
-    private LeilaoState estado;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String descricao;
     private Date dataInicio;
     private Date dataFim;
+
+    @Transient
+    private LeilaoState estado;
+
 
     public Leilao(String descricao, Date dataInicio, Date dataFim) {
         this.descricao = descricao;
