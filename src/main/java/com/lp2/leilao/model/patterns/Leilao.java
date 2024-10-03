@@ -29,6 +29,10 @@ public class Leilao {
         this.estado = new EmAbertoState(); // Estado inicial
     }
 
+    public Leilao() {
+
+    }
+
     public void abrirLeilao() {
         estado.abrirLeilao(this);
     }
