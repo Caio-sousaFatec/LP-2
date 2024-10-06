@@ -1,5 +1,7 @@
 package com.lp2.leilao.model.patterns;
 
+import com.lp2.leilao.model.Leilao;
+
 public class FinalizadoState implements LeilaoState {
 
     @Override

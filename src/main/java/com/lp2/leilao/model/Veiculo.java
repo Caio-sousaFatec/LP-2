@@ -3,7 +3,6 @@ package com.lp2.leilao.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import com.lp2.leilao.model.patterns.Leilao;
 
 @Getter
 @Setter

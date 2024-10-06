@@ -1,6 +1,7 @@
 package com.lp2.leilao.model.patterns;
 
 import com.lp2.leilao.model.Dispositivo;
+import com.lp2.leilao.model.Leilao;
 import com.lp2.leilao.model.Veiculo;
 
     public abstract class LoteFactory {

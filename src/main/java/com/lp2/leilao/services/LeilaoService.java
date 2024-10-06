@@ -1,5 +1,6 @@
 package com.lp2.leilao.services;
 
+import com.lp2.leilao.model.Leilao;
 import com.lp2.leilao.model.patterns.*;
 import com.lp2.leilao.repository.LeilaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
