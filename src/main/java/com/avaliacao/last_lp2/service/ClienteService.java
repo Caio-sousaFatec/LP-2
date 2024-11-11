@@ -3,6 +3,7 @@ package com.avaliacao.last_lp2.service;
 import com.avaliacao.last_lp2.dto.ClienteDTO;
 import com.avaliacao.last_lp2.entity.Cliente;
 import com.avaliacao.last_lp2.repository.ClienteRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,6 +45,10 @@ public class ClienteService {
 
     // Remoção de um cliente
     public void removerCliente(int idCliente) {
+        if (!clienteRepository.existsById(idCliente)) {
+            throw new EntityNotFoundException("Cliente com ID " + idCliente + " não encontrado.");
+        }
         clienteRepository.deleteById(idCliente);
     }
+
 }

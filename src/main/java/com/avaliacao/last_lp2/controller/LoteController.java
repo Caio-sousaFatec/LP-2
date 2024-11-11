@@ -31,6 +31,8 @@ public class LoteController {
         return ResponseEntity.ok(lotes);
     }
 
+
+
     // Atualizar um lote existente
     @PutMapping("/{idLote}")
     public ResponseEntity<LoteDTO> atualizarLote(@PathVariable int idLote, @RequestBody LoteDTO loteDTO) {

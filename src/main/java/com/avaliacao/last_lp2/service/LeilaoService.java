@@ -27,6 +27,13 @@ public class LeilaoService {
     public List<LeilaoDTO> listarLeiloes() {
         return leilaoRepository.findAll().stream().map(Leilao::toDTO).toList();
     }
+    public List<LeilaoDTO> listagemLeiloesPorData() {
+        return leilaoRepository.findAllByOrderByDataOcorrenciaAsc()
+                .stream()
+                .map(Leilao::toDTO)
+                .toList();
+    }
+
 
     // Atualização de um leilão existente
     public LeilaoDTO atualizarLeilao(int idLeilao, LeilaoDTO leilaoDTO) {

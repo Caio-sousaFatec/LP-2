@@ -24,4 +24,7 @@ public class LoteDTO {
         this.lanceInicial = lanceInicial;
         this.leilao = leilao;
     }
+
+
+
 }

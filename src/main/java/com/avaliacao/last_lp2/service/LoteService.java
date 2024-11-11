@@ -47,10 +47,9 @@ public class LoteService {
             lote.setLanceInicial(loteDTO.getLanceInicial());
             return loteRepository.save(lote).toDTO();
         }
-        return null; // Ou lançar exceção
+        return null;
     }
 
-    // Remoção de um lote
     public void removerLote(int idLote) {
         loteRepository.deleteById(idLote);
     }

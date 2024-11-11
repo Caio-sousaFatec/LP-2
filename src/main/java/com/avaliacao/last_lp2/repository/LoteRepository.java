@@ -8,8 +8,7 @@ import java.util.List;
 
 @Repository
 public interface LoteRepository extends JpaRepository<Lote, Integer> {
-
-    // Buscar por tipo de lote (dispositivo ou veículo)
+ // Buscar por tipo de lote (dispositivo ou veículo)
     List<Lote> findByTipo(String tipo);
 
     // Buscar lotes em uma faixa de lance inicial

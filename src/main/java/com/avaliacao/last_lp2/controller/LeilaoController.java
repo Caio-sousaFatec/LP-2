@@ -31,6 +31,12 @@ public class LeilaoController {
         return ResponseEntity.ok(leiloes);
     }
 
+    //listagem por datas
+    @GetMapping("/ordenados-por-data")
+    public List<LeilaoDTO> listarLeiloesPorData() {
+        return leilaoService.listagemLeiloesPorData();
+    }
+
     // Atualizar um leilão existente
     @PutMapping("/{idLeilao}")
     public ResponseEntity<LeilaoDTO> atualizarLeilao(@PathVariable int idLeilao, @RequestBody LeilaoDTO leilaoDTO) {
