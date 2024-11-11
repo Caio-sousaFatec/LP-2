@@ -33,14 +33,14 @@ public class InstituicaoController {
 
     // Atualizar uma instituição financeira existente
     @PutMapping("/{idInstituicao}")
-    public ResponseEntity<InstituicaoDTO> atualizarInstituicao(@PathVariable int idInstituicao, @RequestBody InstituicaoDTO instituicaoDTO) {
+    public ResponseEntity<InstituicaoDTO> atualizarInstituicao(@PathVariable("idInstituicao") int idInstituicao, @RequestBody InstituicaoDTO instituicaoDTO) {
         InstituicaoDTO instituicaoAtualizada = instituicaoService.atualizarInstituicao(idInstituicao, instituicaoDTO);
         return ResponseEntity.ok(instituicaoAtualizada);
     }
 
     // Remover uma instituição financeira
     @DeleteMapping("/{idInstituicao}")
-    public ResponseEntity<Void> removerInstituicao(@PathVariable int idInstituicao) {
+    public ResponseEntity<Void> removerInstituicao(@PathVariable("idInstituicao") int idInstituicao) {
         instituicaoService.removerInstituicao(idInstituicao);
         return ResponseEntity.noContent().build();
     }
