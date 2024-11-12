@@ -52,4 +52,3 @@ public class ClienteController {
 }
 
 
-//todo: necessário resolver erro presente no delete, onde não remove id 0
