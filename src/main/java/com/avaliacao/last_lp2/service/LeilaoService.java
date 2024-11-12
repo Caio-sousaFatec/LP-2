@@ -3,6 +3,7 @@ package com.avaliacao.last_lp2.service;
 import com.avaliacao.last_lp2.dto.LeilaoDTO;
 import com.avaliacao.last_lp2.entity.Leilao;
 import com.avaliacao.last_lp2.repository.LeilaoRepository;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -19,6 +20,7 @@ public class LeilaoService {
     }
 
     // Atualiza o status de todos os leilões periodicamente (a meia noite)
+    @Scheduled(cron = "0 0 0 * * *")
     public void atualizarStatusLeiloes() {
         List<Leilao> leiloes = leilaoRepository.findAll();
         LocalDate hoje = LocalDate.now();
