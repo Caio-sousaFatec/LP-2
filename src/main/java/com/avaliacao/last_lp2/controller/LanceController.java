@@ -26,7 +26,7 @@ public class LanceController {
 
     // Consultar lances por lote
     @GetMapping("/lote/{idLote}")
-    public ResponseEntity<List<LanceDTO>> consultarLancesPorLote(@PathVariable int idLote) {
+    public ResponseEntity<List<LanceDTO>> consultarLancesPorLote(@PathVariable("idLote") int idLote) {
         List<LanceDTO> lances = lanceService.consultarLancesPorLote(idLote);
         return ResponseEntity.ok(lances);
     }

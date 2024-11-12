@@ -39,14 +39,14 @@ public class LeilaoController {
 
     // Atualizar um leilão existente
     @PutMapping("/{idLeilao}")
-    public ResponseEntity<LeilaoDTO> atualizarLeilao(@PathVariable int idLeilao, @RequestBody LeilaoDTO leilaoDTO) {
+    public ResponseEntity<LeilaoDTO> atualizarLeilao(@PathVariable("idLeilao") int idLeilao, @RequestBody LeilaoDTO leilaoDTO) {
         LeilaoDTO leilaoAtualizado = leilaoService.atualizarLeilao(idLeilao, leilaoDTO);
         return ResponseEntity.ok(leilaoAtualizado);
     }
 
     // Remover um leilão
     @DeleteMapping("/{idLeilao}")
-    public ResponseEntity<Void> removerLeilao(@PathVariable int idLeilao) {
+    public ResponseEntity<Void> removerLeilao(@PathVariable("idLeilao") int idLeilao) {
         leilaoService.removerLeilao(idLeilao);
         return ResponseEntity.noContent().build();
     }

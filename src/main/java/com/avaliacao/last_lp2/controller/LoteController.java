@@ -35,14 +35,14 @@ public class LoteController {
 
     // Atualizar um lote existente
     @PutMapping("/{idLote}")
-    public ResponseEntity<LoteDTO> atualizarLote(@PathVariable int idLote, @RequestBody LoteDTO loteDTO) {
+    public ResponseEntity<LoteDTO> atualizarLote(@PathVariable("idLote") int idLote, @RequestBody LoteDTO loteDTO) {
         LoteDTO loteAtualizado = loteService.atualizarLote(idLote, loteDTO);
         return ResponseEntity.ok(loteAtualizado);
     }
 
     // Remover um lote
     @DeleteMapping("/{idLote}")
-    public ResponseEntity<Void> removerLote(@PathVariable int idLote) {
+    public ResponseEntity<Void> removerLote(@PathVariable("idLote") int idLote) {
         loteService.removerLote(idLote);
         return ResponseEntity.noContent().build();
     }
