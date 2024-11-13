@@ -1,10 +1,7 @@
 package com.avaliacao.last_lp2.entity;
 
 import com.avaliacao.last_lp2.dto.InstituicaoDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +15,8 @@ import lombok.Setter;
 public class Instituicao{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idInstituicao;
+
+    private int id_instituicao;
     private String nome;
     private String cnpj;
 

@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Lance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idLance;
+    private int id;
     private Double valor;
     @ManyToOne(targetEntity = Cliente.class)
     private Cliente cliente; // Relação com a entidade Cliente

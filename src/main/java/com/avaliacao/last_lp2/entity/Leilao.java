@@ -27,7 +27,7 @@ public class Leilao {
     private String endereco;
     private String cidade;
     private String estado;
-    private String status; // EM ABERTO, EM ANDAMENTO, FINALIZADO
+    private String status;
 
   public Leilao(LocalDate dataOcorrencia, LocalDate dataVisitacao, String local, String endereco, String cidade, String estado, String status) {
     this.dataOcorrencia = dataOcorrencia;

@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Cliente {
     @Id
-    private int idCliente;
+    private int id;
     private String nome;
     private String cpf;
     private String email;

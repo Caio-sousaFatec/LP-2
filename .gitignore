@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### todo ###
-/resources/todo
+.todo
