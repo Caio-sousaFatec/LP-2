@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class LeilaoDTO {
     private Integer id;
+    private String nomeLeilao;
     private LocalDate dataOcorrencia;
     private LocalDate dataVisitacao;
     private String local;
@@ -21,7 +22,8 @@ public class LeilaoDTO {
     private String estado;
     private String status;
 
-    public LeilaoDTO(LocalDate dataOcorrencia, LocalDate dataVisitacao, String local, String endereco, String cidade, String estado, String status) {
+    public LeilaoDTO(String nomeLeilao, LocalDate dataOcorrencia, LocalDate dataVisitacao, String local, String endereco, String cidade, String estado, String status) {
+        this.nomeLeilao = nomeLeilao;
         this.dataOcorrencia = dataOcorrencia;
         this.dataVisitacao = dataVisitacao;
         this.local = local;

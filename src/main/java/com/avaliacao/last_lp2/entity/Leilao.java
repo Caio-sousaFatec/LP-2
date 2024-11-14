@@ -18,9 +18,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Leilao {
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idLeilao;
+    private String nomeLeilao;
     private LocalDate dataOcorrencia;
     private LocalDate dataVisitacao;
     private String local;
@@ -29,17 +30,18 @@ public class Leilao {
     private String estado;
     private String status;
 
-  public Leilao(LocalDate dataOcorrencia, LocalDate dataVisitacao, String local, String endereco, String cidade, String estado, String status) {
-    this.dataOcorrencia = dataOcorrencia;
-    this.dataVisitacao = dataVisitacao;
-    this.local = local;
-    this.endereco = endereco;
-    this.cidade = cidade;
-    this.estado = estado;
-    this.status = status;
-  }
+    public Leilao(String nomeLeilao, LocalDate dataOcorrencia, LocalDate dataVisitacao, String local, String endereco, String cidade, String estado, String status) {
+        this.nomeLeilao = nomeLeilao;
+        this.dataOcorrencia = dataOcorrencia;
+        this.dataVisitacao = dataVisitacao;
+        this.local = local;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.status = status;
+    }
 
     public LeilaoDTO toDTO() {
-        return new LeilaoDTO(dataOcorrencia, dataVisitacao, local, endereco, cidade, estado, status);
+        return new LeilaoDTO(nomeLeilao, dataOcorrencia, dataVisitacao, local, endereco, cidade, estado, status);
     }
 }

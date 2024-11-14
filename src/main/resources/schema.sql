@@ -28,6 +28,7 @@ CREATE TABLE lance
 CREATE TABLE leilao
 (
     id_leilao       INT NOT NULL,
+    nome_leilao VARCHAR,
     data_ocorrencia date,
     data_visitacao  date,
     local           VARCHAR(255),

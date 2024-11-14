@@ -54,7 +54,7 @@ public class LeilaoService {
         } else {
             varStatus = "Em andamento";
         }
-        Leilao leilao = new Leilao(leilaoDTO.getDataOcorrencia(), leilaoDTO.getDataVisitacao(), leilaoDTO.getLocal(), leilaoDTO.getEndereco(), leilaoDTO.getCidade(), leilaoDTO.getEstado(), varStatus);
+        Leilao leilao = new Leilao(leilaoDTO.getNomeLeilao(), leilaoDTO.getDataOcorrencia(), leilaoDTO.getDataVisitacao(), leilaoDTO.getLocal(), leilaoDTO.getEndereco(), leilaoDTO.getCidade(), leilaoDTO.getEstado(), varStatus);
 
         return leilaoRepository.save(leilao).toDTO();
     }
