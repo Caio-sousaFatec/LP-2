@@ -16,10 +16,12 @@ public class LeilaoInstituicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @ManyToOne(targetEntity = Leilao.class)
-    @JoinColumn(name = "idLeilao")
-    private int idLeilao;
+    @JoinColumn(name = "id_leilao")
+    private Leilao leilao;
+
     @ManyToOne(targetEntity = Instituicao.class)
-    @JoinColumn(name = "idInstituicao")
-    private int idInstituicao;
+    @JoinColumn(name = "id_instituicao")
+    private Instituicao instituicao;
 }

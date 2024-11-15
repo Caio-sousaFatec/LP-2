@@ -10,6 +10,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class InstituicaoDTO {
+    private int id;
     private String nome;
     private String cnpj;
+
+    public InstituicaoDTO(String nome, String cnpj) {
+        this.nome = nome;
+        this.cnpj = cnpj;
+    }
 }

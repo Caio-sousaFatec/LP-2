@@ -14,13 +14,15 @@ VALUES ('Banco do Brasil', '01.234.567/0001-89'),
 INSERT INTO leilao (id_leilao, nome_leilao, data_ocorrencia, data_visitacao, local, endereco, cidade, estado, status)
 VALUES (1, 'Leilao da Creuza', '2024-12-01', '2024-11-25', 'Auditório Central', 'Rua das Flores, 100', 'São Paulo',
         'SP', 'Aberto'),
-       (2, 'Leilao da PRF', '2024-12-15', '2024-12-10', 'Centro de Convenções', 'Av. Brasil, 2000', 'Rio de Janeiro',
+       (2, 'Leilao da PRF', '2024-12-15', '2024-12-10', 'Pátio', 'Av. dos migrantes, 1268', 'Jacareí',
+        'RJ', 'Aberto'),
+       (3, 'Leilao do STJ', '2024-5-15', '2024-6-10', 'Centro de Convenções', 'Av. Brasil, 2000', 'Rio de Janeiro',
         'RJ', 'Aberto');
 
 -- Tabela leilao_instituicao
 INSERT INTO leilao_instituicao (id_leilao, id_instituicao)
 VALUES (1, 1),
-       (1, 2),
+       (3, 2),
        (2, 3);
 
 -- Tabela lote

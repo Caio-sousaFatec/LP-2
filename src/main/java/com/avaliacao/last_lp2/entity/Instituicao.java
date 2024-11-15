@@ -12,11 +12,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Instituicao{
+public class Instituicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private int id_instituicao;
+    @Column(name = "id_instituicao")
+    private int idInstituicao;
     private String nome;
     private String cnpj;
 
