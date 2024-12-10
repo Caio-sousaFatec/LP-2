@@ -1,17 +1,17 @@
 package com.project.lastLPII.service;
 
-import com.project.lastLPII.entity.dto.LanceDTO;
+import com.project.lastLPII.entity.Lote;
 import com.project.lastLPII.entity.dto.LeilaoDTO;
 import com.project.lastLPII.entity.dto.LoteDTO;
 import com.project.lastLPII.entity.Leilao;
-import com.project.lastLPII.entity.Lote;
+import com.project.lastLPII.entity.dto.LoteValorTotalDTO;
 import com.project.lastLPII.repository.LanceRepository;
 import com.project.lastLPII.repository.LeilaoRepository;
 import com.project.lastLPII.repository.LoteRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -60,11 +60,17 @@ public class LoteService {
         return loteDTOList;
     }
 
-    public List<LoteDTO> listarLotesEntreLancesTotais(double min, double max, int idLeilao) {
-        List<Lote> lotes = loteRepository.findLotesByLancesTotaisBetween(min, max, idLeilao);
-        return lotes.stream()
-                .map(lote -> modelMapper.map(lote, LoteDTO.class))
-                .toList();
+    public List<LoteValorTotalDTO> listarLotesEntreLancesTotais(double min, double max, int idLeilao) {
+        List<Object[]> results = loteRepository.findLotesByLancesTotaisBetween(min, max, idLeilao);
+        return results.stream()
+                .map(row -> new LoteValorTotalDTO(
+                        (Integer) row[0],  // ID_LOTE
+                        (String) row[1],   // NOME
+                        (String) row[2].toString(),   // DESCRICAO
+                        (BigDecimal) row[3], // LANCE_INICIAL
+                        (BigDecimal) row[4]  // VALOR_TOTAL
+                ))
+                .collect(Collectors.toList());
     }
 
 
@@ -72,10 +78,9 @@ public class LoteService {
         Optional<Lote> loteOpt = loteRepository.findById(idLote);
         if (loteOpt.isPresent()) {
             Lote lote = loteOpt.get();
-            lote.setTipo(loteDTO.getTipo());
             lote.setNome(loteDTO.getNome());
             lote.setDescricao(loteDTO.getDescricao());
-            lote.setLanceInicial(loteDTO.getLanceInicial());
+            lote.setLanceInicial(BigDecimal.valueOf(loteDTO.getLanceInicial()));
             return modelMapper.map(loteRepository.save(lote), LoteDTO.class);
         }
         return null;
@@ -83,10 +88,6 @@ public class LoteService {
 
     public Optional<List<LoteDTO>> getByWord(String palavraBusca) {
         return Optional.of(loteRepository.findByNomeContainingIgnoreCase(palavraBusca).stream().map((element) -> modelMapper.map(element, LoteDTO.class)).collect(Collectors.toList()));
-    }
-
-    public Optional<List<LoteDTO>> getByType(String tipoBusca) {
-        return Optional.of(loteRepository.findByTipoContainingIgnoreCase(tipoBusca).stream().map((element) -> modelMapper.map(element, LoteDTO.class)).collect(Collectors.toList()));
     }
 
     public void removerLote(int idLote) {

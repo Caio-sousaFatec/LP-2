@@ -4,6 +4,7 @@ import com.project.lastLPII.config.ExporterConfig;
 import com.project.lastLPII.entity.dto.LeilaoDETDTO;
 import com.project.lastLPII.entity.dto.LeilaoDTO;
 import com.project.lastLPII.entity.dto.LoteDTO;
+import com.project.lastLPII.entity.dto.LoteValorTotalDTO;
 import com.project.lastLPII.service.LeilaoService;
 import com.project.lastLPII.service.LoteService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -118,11 +119,11 @@ public class LeilaoController {
             @ApiResponse(responseCode = "404", description = "Nenhum lote encontrado no intervalo especificado."),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor.")
     })
-    public ResponseEntity<List<LoteDTO>> buscarLotesPorFaixa(
+    public ResponseEntity<List<LoteValorTotalDTO>> buscarLotesPorFaixa(
             @PathVariable double min,
             @PathVariable double max,
             @PathVariable int idLeilao) {
-        List<LoteDTO> lotes = loteService.listarLotesEntreLancesTotais(min, max, idLeilao);
+        List<LoteValorTotalDTO> lotes = loteService.listarLotesEntreLancesTotais(min, max, idLeilao);
         return ResponseEntity.ok(lotes);
     }
 

@@ -1,21 +1,18 @@
 package com.project.lastLPII.service;
 
-import com.project.lastLPII.entity.dto.*;
-import com.project.lastLPII.entity.Cliente;
 import com.project.lastLPII.entity.Lance;
-import com.project.lastLPII.entity.Lote;
+import com.project.lastLPII.entity.dto.*;
 import com.project.lastLPII.repository.ClienteRepository;
 import com.project.lastLPII.repository.LanceRepository;
 import com.project.lastLPII.repository.LeilaoRepository;
 import com.project.lastLPII.repository.LoteRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class LanceService {
@@ -44,7 +41,7 @@ public class LanceService {
         Optional<LoteDTO> loteOpt = Optional.ofNullable(loteService.getLoteById(loteId));
         loteOpt.get().setLeilaoDTO(leilaoRepository.findById(loteRepository.findLeilaoByLoteId(loteId)).map((element) -> modelMapper.map(element, LeilaoDTO.class)).get());
         if (clienteOpt.isPresent() && loteOpt.isPresent()) {
-            LanceDTO lanceDTO = new LanceDTO(valor, clienteRepository.findById(clienteId).get(), loteRepository.findById(Math.toIntExact(loteId)).get());
+            LanceDTO lanceDTO = new LanceDTO(valor, modelMapper.map(clienteRepository.findById(clienteId).get(), ClienteDTO.class), modelMapper.map(loteRepository.findById(Math.toIntExact(loteId)).get(), LoteDTO.class));
             Lance lance = modelMapper.map(lanceDTO, Lance.class);
             lanceRepository.save(lance);
         }
@@ -61,12 +58,23 @@ public class LanceService {
         lanceHistoricoDTO.setValor(lance.getValor().doubleValue());
         return lanceHistoricoDTO;
     }
-
     public List<LanceHistoricoDTO> consultarLanceHistorico(int idLote) {
         List<LanceHistoricoDTO> lanceHistoricoDTOList = new ArrayList<>();
         LanceHistoricoDTO lanceHistDto = new LanceHistoricoDTO();
         lanceRepository.findByLoteId(idLote).forEach(lance -> lanceHistoricoDTOList.add(criarLanceHistorico(lance)));
         return lanceHistoricoDTOList;
     }
+
+    public Optional<List<LanceDTO>> getByType(Long idLeilao, String tipoBusca) {
+        if (tipoBusca.contains("ulo") || tipoBusca.contains("Ve")) {
+            List<Lance> lances = lanceRepository.findByTipoContainingIgnoreCaseVeiculo(idLeilao);
+            List<LanceDTO> lanceDTO = lances.stream().map((element) -> modelMapper.map(element, LanceDTO.class)).collect(Collectors.toList());
+            return Optional.of(lanceDTO);
+        } else if (tipoBusca.contains("Dispositivo") || tipoBusca.contains("dispositivo")) {
+            return Optional.of(lanceRepository.findByTipoContainingIgnoreCaseDispositivo(idLeilao).stream().map((element) -> modelMapper.map(element, LanceDTO.class)).collect(Collectors.toList()));
+        }
+        return Optional.empty();
+    }
+
 }
 

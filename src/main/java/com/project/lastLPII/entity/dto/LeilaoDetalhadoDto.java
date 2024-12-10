@@ -3,7 +3,6 @@ package com.project.lastLPII.entity.dto;
 import com.project.lastLPII.entity.enums.LeilaoStatusTypes;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

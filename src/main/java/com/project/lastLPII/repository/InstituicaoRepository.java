@@ -1,7 +1,6 @@
 package com.project.lastLPII.repository;
 
 import com.project.lastLPII.entity.Instituicao;
-import com.project.lastLPII.entity.Lote;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

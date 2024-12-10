@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 @Table(name = "LANCE")
 public class Lance {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_LANCE", nullable = false)
     private Integer id;
 

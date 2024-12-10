@@ -35,7 +35,6 @@ public class LanceController {
         lanceService.registrarLance(valor, clienteId, (long) loteId);
         return HttpStatus.CREATED;
     }
-
     @GetMapping("/lote/{idLote}")
     @Operation(summary = "Consultar lances por lote",
             description = "Retorna a lista de todos os lances associados a um lote específico, com base no ID fornecido.")
@@ -61,5 +60,16 @@ public class LanceController {
         return ResponseEntity.ok(lanceService.consultarLanceHistorico(idLote));
     }
 
+    @GetMapping("/busca/tipo/{idLeilao}/{tipoDeItem}")
+    @Operation(summary = "Listar lance por tipo de item",
+            description = "Retorna os lances que correspondem a um tipo de item específico fornecido.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lances encontrados com sucesso."),
+            @ApiResponse(responseCode = "404", description = "Nenhum lance encontrado para o tipo especificado."),
+            @ApiResponse(responseCode = "500", description = "Erro interno do servidor ao buscar lotes.")
+    })
+    public ResponseEntity<List<LanceDTO>> listarLotesPorTipo(@PathVariable Long idLeilao, @PathVariable String tipoDeItem) {
+        return ResponseEntity.ok(lanceService.getByType(idLeilao, tipoDeItem).get());
+    }
 }
 

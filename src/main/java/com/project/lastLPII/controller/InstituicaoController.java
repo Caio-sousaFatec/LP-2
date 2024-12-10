@@ -33,7 +33,6 @@ public class InstituicaoController {
         InstituicaoDTO novaInstituicao = instituicaoService.registrarInstituicao(instituicaoDTO);
         return ResponseEntity.ok(novaInstituicao);
     }
-
     @GetMapping
     @Operation(summary = "Listar todas as instituiçãos", description = "Retorna uma lista com todas as instituiçãos registradas no sistema.")
     @ApiResponses(value = {
